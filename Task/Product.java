@@ -20,11 +20,6 @@ public class Product {
     }
 
 
-    public Product(String name, ProductDescription productDescription) {
-        this.name = name;
-        this.productDescription = productDescription;
-    }
-
     public String getName() {
         return name;
     }
@@ -43,8 +38,8 @@ public class Product {
 
     @Override
     public String toString() {
-        return "Product{" +
-                "name='" + name + '\'' +
-                '}';
+        return  name + " " +
+                price + " CAD";
     }
+
 }

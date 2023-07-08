@@ -2,6 +2,7 @@ package task.Task;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Scanner;
 
 public class Client {
     private String name;
@@ -31,7 +32,8 @@ public class Client {
 
     public void addProductToBucket(Product productName, int quantity){
         // положить выбранные продукты в корзину
-        basket.put(productName, quantity);
+
+        basket.put( productName, quantity);
     }
 
     public void deleteProductFromBucket(Product productName, int quantity){
@@ -57,5 +59,9 @@ public class Client {
 
     public void setBalance(double balance) {
         this.balance = balance;
+    }
+
+    public String getName() {
+        return name;
     }
 }

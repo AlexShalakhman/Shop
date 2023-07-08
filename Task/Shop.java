@@ -5,8 +5,8 @@ import java.util.List;
 import java.util.Map;
 
 public class Shop {
-    private List<Casher> cashers = new ArrayList<>();
-    private Warehouse warehouse = new Warehouse();
+    private List<Casher> cashers;
+    private Warehouse warehouse;
     private double bank;
 
     public List<Casher> getCashers() {
@@ -44,5 +44,9 @@ public class Shop {
 
     public void setBank(double bank) {
         this.bank = bank;
+    }
+
+    public static void shopPrepareForWork(){
+      //  Shop shop = new Shop(ware)
     }
 }

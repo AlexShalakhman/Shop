@@ -49,7 +49,7 @@ public class Casher {
         }
 
 
-    public void  returnProductFromClient(Client clientName){
+    public void  returnProductFromClient(Product product, int quantity){
 
     }
 

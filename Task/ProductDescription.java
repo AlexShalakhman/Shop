@@ -1,9 +1,13 @@
 package task.Task;
 
 public class ProductDescription {
-    private String description;
+    private ProductType productType;
 
-    public ProductDescription(String description) {
-        this.description = description;
+    public ProductDescription(ProductType productType) {
+        this.productType = productType;
+    }
+
+    public ProductType getProductType() {
+        return productType;
     }
 }

@@ -7,17 +7,18 @@ public class Warehouse {
     private static Map<Product, Integer> productMap = new HashMap<>();
 
     public void addProduct(Product product, Integer count) {
-        if(productMap.containsKey(product)) {
+        if (productMap.containsKey(product)) {
             productMap.put(product, productMap.get(product) + count);
         } else {
             productMap.put(product, count);
         }
     }
+
     public void removeProduct(Product product, Integer count) {
-      if (productMap.containsKey(product) && productMap.get(product) >= count) {
-           Integer currentCount = productMap.get(product);
-           productMap.put(product, currentCount - count);
-       }
+        if (productMap.containsKey(product) && productMap.get(product) >= count) {
+            Integer currentCount = productMap.get(product);
+            productMap.put(product, currentCount - count);
+        }
     }
 
     public Integer showProductQuantity(Product product) {
@@ -33,5 +34,15 @@ public class Warehouse {
         return productMap;
     }
 
+    public void showProductByType(ProductType productType) {
+        for (Map.Entry<Product, Integer> pair : productMap.entrySet()) {
+            if (pair.getKey().getProductDescription().getProductType().getOrderNm() == productType.getOrderNm()) {
+                Product key = pair.getKey();
+                Integer value = pair.getValue();
+                System.out.println(key + " --> " + value);
+            }
+        }
+
+    }
 
 }
