@@ -39,10 +39,12 @@ public class Warehouse {
             if (pair.getKey().getProductDescription().getProductType().getOrderNm() == productType.getOrderNm()) {
                 Product key = pair.getKey();
                 Integer value = pair.getValue();
-                System.out.println(key + " --> " + value);
+                System.out.println(key + " --> " + value + " items available for purchase");
             }
         }
-
     }
+
+
+
 
 }

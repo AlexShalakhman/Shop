@@ -38,8 +38,8 @@ public class Product {
 
     @Override
     public String toString() {
-        return  name + " " +
-                price + " CAD";
+        return   name  + " " +
+                price + " CAD ";
     }
 
 }

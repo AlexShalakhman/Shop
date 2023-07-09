@@ -7,8 +7,9 @@ public enum MenuCategories {
     ADD_ITEM_TO_BASKET(2, ". Add item to basket"),
     REMOVE_PRODUCT(3, ". Remove item from basket"),
     SHOW_BASKET(4, ". Show your basket"),
-    BUY_PRODUCTS(5,". Checkout"),
-    END_SESSION(6, ". End session");
+    EMPTY_BASKET(5,". Empty your basket" ),
+    BUY_PRODUCTS(6,". Checkout"),
+    END_SESSION(7, ". End session");
 
 
     @Override
@@ -27,9 +28,6 @@ public enum MenuCategories {
     public String getCategories() {
         return categories;
     }
-
-
-
 
     }
 

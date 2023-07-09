@@ -1,8 +1,6 @@
 package task.Task;
 
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Scanner;
+import java.util.*;
 
 public class Client {
     private String name;
@@ -16,36 +14,64 @@ public class Client {
         this.shop = shop;
     }
 
-
-    public void buyProduct( Product product, Integer count){
-        // положенные продукты в корзине передать кассиру и снять деньги с баланса
-        if(product.getPrice() < balance)
-        basket.put(product, count);
-        else
-            System.out.println("Sorry, you don't have enough money right now.");
+    private boolean isReadyToPay(double amount) {
+        return (amount <= balance);
+    }
+    public boolean payForProducts(double priceToPay) {
+        if (isReadyToPay(priceToPay)) {
+            balance -= priceToPay;
+            basket.clear();
+        } else {
+            return false;
+        }
+        return true;
     }
 
-    public void findProductByName(Product value){
-        // найти продукт в мапе по имени
-        shop.getWarehouse().getProductMap().containsValue(value);
+
+    public boolean addProductToBasket(Product product, int count) {
+        if (basket.containsKey(product)) {
+            basket.put(product, basket.get(product) + count);
+        } else {
+            basket.put(product, count);
+        }
+        if (basket.containsKey(product) && basket.get(product) >= count) {
+            shop.getWarehouse().removeProduct(product, count);
+            return true;
+        } else {
+            return false;
+        }
     }
 
-    public void addProductToBucket(Product productName, int quantity){
-        // положить выбранные продукты в корзину
-
-        basket.put( productName, quantity);
+    public boolean removeProductFromBasket(Product product, int count) {
+        if (basket.containsKey(product)) {
+            basket.remove(product, basket.get(product) + count);
+        } else {
+            basket.remove(product, count);
+        }
+        if (basket.containsKey(product) && basket.get(product) >= count) {
+            shop.getWarehouse().addProduct(product, count);
+            return true;
+        } else {
+            return false;
+        }
     }
 
-    public void deleteProductFromBucket(Product productName, int quantity){
-        // убрать выбранные продукты и вернуть в вархауз
-        int currentAmount = basket.getOrDefault(productName, 0);
-        if ( currentAmount > quantity)
-        basket.put(productName, currentAmount - quantity);
-        else
-            basket.remove(productName);
+    public static Product findProductByName(String name, Client client) {
+        for (Product product : client.getShop().getWarehouse().getProductMap().keySet()) {
+            String fullName = product.getName();
+            int spaceIndex = fullName.indexOf(" ");
+            if (spaceIndex != -1) {
+                String namePrefix = fullName.substring(0, spaceIndex).trim();
+                if (namePrefix.equalsIgnoreCase(name)) {
+                    return product;
+                }
+            }
+        }
+        return null;
     }
 
-    public Map<Product, Integer> getBasket() {
+
+    public  Map<Product, Integer> getBasket() {
         return basket;
     }
 
@@ -57,11 +83,8 @@ public class Client {
         return shop;
     }
 
-    public void setBalance(double balance) {
-        this.balance = balance;
-    }
-
     public String getName() {
         return name;
     }
+
 }
