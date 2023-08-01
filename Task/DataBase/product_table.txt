@@ -1,0 +1,21 @@
+1,Quark,MILK PRODUCTS,100,7.99
+2,Buccatini 500 gram,MACARONI,500,4.4
+3,Spagetti Delvavella 1 kg,MACARONI,500,4.4
+4,Milk 3% 2 liters,milk products,20,5.99
+5,JackDaniels 500ml,alcohol,100,33.70
+6,Beherovka Odessa mama,alcohol,100,17.63
+7,Iphone 14 PRO,electronics,71,2799
+8,Laptop alienware 2022 512GB/i9,electronics,20,3800
+9,Monitor dell 26 inch 60gh,electronics,20,400
+10,Pike 1 kg,fish,15,55.99
+11,Walleye 1 kg,fish,15,72.87
+12,Apple 1 kg,fruit,200,4.99
+13,Cocos 1 item,fruit,100,7.25
+14,Pork meat 1kg,meat,50,19.50
+15,Chicken Nuggets 1kg,meat,100,8.99
+16,Cigarettes President 20 sticks,tobacco,60,13.22
+17,Parliament 20 sticks,tobacco,50,20.69
+18,Cucumber 1 item extra large,vegetable,100,7.99
+19,Carrot 1 extra large,vegetable,100,5.99
+20,Rice 5kg,kashas,100,23.50
+21,Green Beans 400 gram,cans,200,3.30

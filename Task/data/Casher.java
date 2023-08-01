@@ -1,4 +1,7 @@
-package task.Task;
+package task.Task.data;
+
+import task.Task.data.Client;
+import task.Task.data.Product;
 
 import java.util.HashSet;
 import java.util.Map;

@@ -1,17 +1,23 @@
-package task.Task;
+package task.Task.data;
+
+import task.Task.OldClasses.Shop;
+import task.Task.dao.ClientDao;
 
 import java.util.*;
 
+
 public class Client {
+    private Long id;
     private String name;
     private double balance;
     private Shop shop;
     private Map<Product, Integer> basket = new HashMap<>();
 
-    public Client(String name, double balance, Shop shop) {
+    public Client(Long id, String name, double balance) {
+        this.id = id;
         this.name = name;
         this.balance = balance;
-        this.shop = shop;
+
     }
 
     private boolean isReadyToPay(double amount) {
@@ -87,4 +93,14 @@ public class Client {
         return name;
     }
 
+    @Override
+    public String toString() {
+        return "Client{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", balance=" + balance +
+                ", shop=" + shop +
+                ", basket=" + basket +
+                '}';
+    }
 }

@@ -1,4 +1,7 @@
-package task.Task;
+package task.Task.OldClasses;
+
+import task.Task.data.Product;
+import task.Task.data.ProductType;
 
 import java.util.HashMap;
 import java.util.Map;

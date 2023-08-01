@@ -1,7 +1,9 @@
-package task.Task;
+package task.Task.OldClasses;
 
-import java.util.ArrayList;
-import java.util.List;
+import task.Task.data.Casher;
+import task.Task.data.Client;
+import task.Task.data.Product;
+
 import java.util.Map;
 
 public class Shop {

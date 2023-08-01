@@ -1,4 +1,4 @@
-package task.Task;
+package task.Task.data;
 
 public enum ProductType {
     ALCOHOL(1, "Alcohol", "Different alcohol beverages"),

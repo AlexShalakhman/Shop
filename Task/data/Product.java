@@ -1,4 +1,6 @@
-package task.Task;
+package task.Task.data;
+
+import task.Task.data.ProductDescription;
 
 public class Product {
     private String name;
@@ -13,7 +15,7 @@ public class Product {
         this.price = price;
     }
 
-    public Product(String name, ProductDescription productDescription, double price) {
+    public Product(Integer id, String name, ProductDescription productDescription, double price) {
         this.name = name;
         this.productDescription = productDescription;
         this.price = price;

@@ -1,4 +1,4 @@
-package task.Task;
+package task.Task.UI;
 
 import java.util.Scanner;
 
