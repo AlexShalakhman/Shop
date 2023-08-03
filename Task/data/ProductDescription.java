@@ -1,5 +1,7 @@
 package task.Task.data;
 
+import task.Task.UI.EnumUI.ProductType;
+
 public class ProductDescription {
     private ProductType productType;
 

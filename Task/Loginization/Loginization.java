@@ -8,26 +8,24 @@ import java.nio.file.Path;
 
 public class Loginization {
 
-    public static Client login(String login, String password) {
+    public Client login(String login, String password) {
         boolean loop = false;
+        LoginizationValidator loginizationValidator = new LoginizationValidator();
+        ClientDao clientDao = new ClientDao();
             try {
                 while(!loop) {
 
-                    if (LoginizationValidator.validateUser(login, password)) {
-                        Client client = ClientDao.initializeClient(login, password);
-                        System.out.println("You have successfully logged in!");
-                        System.out.println("Hello, " + ClientDao.findClientFirstNameByLoginData(login, password) + "! What would you like to do today?");
+                    if (loginizationValidator.validateUser(login, password)) {
+                        Client client = clientDao.initializeClient(login, password);
                         loop = true;
                         return client;
                     } else {
                         loop = true;
                     }
                 }
-
             } catch (Exception e) {
                 e.printStackTrace();
             }
-            System.out.println("Wrong login or password. Please try again.");
             return null;
 
     }

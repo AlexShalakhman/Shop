@@ -1,4 +1,4 @@
-package task.Task.data;
+package task.Task.UI.EnumUI;
 
 public enum ProductType {
     ALCOHOL(1, "Alcohol", "Different alcohol beverages"),
@@ -28,7 +28,6 @@ public enum ProductType {
         return label;
     }
 
-
     public String getDescription() {
         return description;
     }
@@ -47,5 +46,14 @@ public enum ProductType {
     public String toString() {
         return  orderNm +". " +
                  label;
+    }
+
+    public static ProductType getProductTypeCategoryByValue(int value) {
+        for (ProductType category : ProductType.values()) {
+            if (category.orderNm == value) {
+                return category;
+            }
+        }
+        return null;
     }
 }

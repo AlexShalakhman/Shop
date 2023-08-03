@@ -1,9 +1,6 @@
 package task.Task.dao;
 
-import task.Task.data.Client;
 import task.Task.data.Product;
-import task.Task.data.ProductDescription;
-import task.Task.data.ProductType;
 
 import java.io.*;
 import java.nio.file.Path;

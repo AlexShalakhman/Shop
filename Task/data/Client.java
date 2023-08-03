@@ -41,7 +41,7 @@ public class Client {
             basket.put(product, count);
         }
         if (basket.containsKey(product) && basket.get(product) >= count) {
-            shop.getWarehouse().removeProduct(product, count);
+
             return true;
         } else {
             return false;
@@ -62,6 +62,8 @@ public class Client {
         }
     }
 
+
+
     public static Product findProductByName(String name, Client client) {
         for (Product product : client.getShop().getWarehouse().getProductMap().keySet()) {
             String fullName = product.getName();
@@ -75,6 +77,8 @@ public class Client {
         }
         return null;
     }
+
+
 
 
     public  Map<Product, Integer> getBasket() {

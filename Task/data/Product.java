@@ -1,6 +1,6 @@
 package task.Task.data;
 
-import task.Task.data.ProductDescription;
+import task.Task.UI.EnumUI.ProductType;
 
 public class Product {
     private String name;
@@ -36,6 +36,11 @@ public class Product {
 
     public void setProductDescription(ProductDescription productDescription) {
         this.productDescription = productDescription;
+    }
+    public void getAllProductTypesPrinted(){
+        for (ProductType producttype: ProductType.values()) {
+            System.out.println(producttype);
+        }
     }
 
     @Override

@@ -1,7 +1,7 @@
 package task.Task.OldClasses;
 
 import task.Task.data.Product;
-import task.Task.data.ProductType;
+import task.Task.UI.EnumUI.ProductType;
 
 import java.util.HashMap;
 import java.util.Map;

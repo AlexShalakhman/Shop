@@ -1,11 +1,6 @@
 package task.Task.service;
 
-import task.Task.dao.ProductDao;
-import task.Task.data.ProductDescription;
 import task.Task.data.Client;
-import task.Task.data.Product;
-import task.Task.OldClasses.Warehouse;
-import task.Task.data.ProductType;
 
 public class ShopManager {
 

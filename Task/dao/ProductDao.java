@@ -2,7 +2,7 @@ package task.Task.dao;
 
 import task.Task.data.Product;
 import task.Task.data.ProductDescription;
-import task.Task.data.ProductType;
+import task.Task.UI.EnumUI.ProductType;
 
 import java.io.*;
 import java.nio.file.*;
@@ -11,20 +11,17 @@ import java.util.*;
 
 public class ProductDao {
     private static final Path DB_PATH = Path.of("Task/DataBase/product_table.txt");
-    public Product findByName(String name){
-        return null;
-    }
 
 
     public static Product findProductByName(String name) {
         try (BufferedReader reader = new BufferedReader(new FileReader(DB_PATH.toFile()))) {
             String line;
             while ((line = reader.readLine()) != null) {
-                String[] columns = line.split(","); // Assuming the data is comma-separated
+                String[] columns = line.split(",");
 
                 if (columns.length >= 5) {
                     String productName = columns[1].trim();
-                    if (productName.equalsIgnoreCase(name)) {
+                    if (productName.contains(name)) {
                         int id = Integer.parseInt(columns[0].trim());
                         String type = columns[2].trim();
                         double price = Double.parseDouble(columns[4].trim());
@@ -77,7 +74,7 @@ public class ProductDao {
         try (BufferedReader reader = new BufferedReader(new FileReader(DB_PATH.toFile()))) {
             String line;
             while ((line = reader.readLine()) != null) {
-                String[] columns = line.split(","); // Assuming the data is comma-separated
+                String[] columns = line.split(",");
 
                 if (columns.length >= 5) {
                     int id = Integer.parseInt(columns[0].trim());
@@ -95,7 +92,7 @@ public class ProductDao {
 
         return products;
     }
-    public static void printProductsByType(String productType) {
+    public void printProductsByTypeUsingString(String productType) {
         try (BufferedReader reader = new BufferedReader(new FileReader(DB_PATH.toFile()))) {
             String line;
             while ((line = reader.readLine()) != null) {
@@ -115,7 +112,17 @@ public class ProductDao {
         }
     }
 
-
+    public String printProductsByType(ProductType productType) throws IOException {
+        BufferedReader reader = new BufferedReader(new FileReader(DB_PATH.toFile()));
+            String line;
+        while ((line = reader.readLine()) != null) {
+            String[] lineValues = line.split(",");
+            if (lineValues[2].equalsIgnoreCase(productType.getLabel())) {
+                System.out.println(lineValues[1] + ", " + lineValues[3] + " items available, " + lineValues[4] + " CAD per item");
+            }
+        }
+        return null;
+    }
 
 
 

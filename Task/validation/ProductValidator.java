@@ -1,6 +1,6 @@
 package task.Task.validation;
 
-import task.Task.data.ProductType;
+import task.Task.UI.EnumUI.ProductType;
 import task.Task.exception.IllegalBalanceException;
 import task.Task.exception.IllegalProductNameException;
 import task.Task.exception.IllegalProductTypeException;

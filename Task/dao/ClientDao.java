@@ -20,7 +20,7 @@ public class ClientDao {
     public void save(Client client){
 
     }
-    public static String[] findClientById(String clientId) {
+    public String[] findClientById(String clientId) {
         try (BufferedReader reader = new BufferedReader(new FileReader(DB_PATH.toFile()))) {
             String line;
             while ((line = reader.readLine()) != null) {
@@ -34,27 +34,11 @@ public class ClientDao {
         }
         return null;
     }
-    public Integer findId(Long id){
-        try(BufferedReader reader = new BufferedReader(new FileReader(DB_PATH.toFile()))) {
-            String s = "2, Some Name2, 2000.0,Apple,Beer,Vodka";
-            String[] split = s.split(",");
-            Client client;
-            for (int i = 3; i < split.length; i++) {
-                String productName = split[i];
-       //         client.addProduct(productDao.findByName(productName));
-            }
-     //       return client;
-
-        } catch (IOException ioException){
-            ioException.printStackTrace();
-        }
-          return null;
-    }
 
     public void update(Client client){
 
     }
-    public static Long findClientIdByLoginData(String login, String password) {
+    public Long findClientIdByLoginData(String login, String password) {
         try (BufferedReader reader = new BufferedReader(new FileReader(DB_PATH.toFile()))) {
             String line;
             while ((line = reader.readLine()) != null) {
@@ -69,7 +53,7 @@ public class ClientDao {
         return null;
     }
 
-    public static String findClientNameByLoginData(String login, String password) {
+    public String findClientNameByLoginData(String login, String password) {
         try (BufferedReader reader = new BufferedReader(new FileReader(DB_PATH.toFile()))) {
             String line;
             while ((line = reader.readLine()) != null) {
@@ -84,13 +68,13 @@ public class ClientDao {
         return null;
     }
 
-    public static String findClientFirstNameByLoginData(String login, String password) {
+    public String findClientFirstNameByLoginData(String login, String password) {
         try (BufferedReader reader = new BufferedReader(new FileReader(DB_PATH.toFile()))) {
             String line;
             while ((line = reader.readLine()) != null) {
                 String[] lineValues = line.split(",");
                 if (lineValues[1].equals(login) && lineValues[2].equals(password)) {
-                    return lineValues[3] + " " + lineValues[4]; // Assuming first name is in the third column (index 2)
+                    return lineValues[3] + " " + lineValues[4];
                 }
             }
         } catch (IOException e) {
@@ -99,12 +83,13 @@ public class ClientDao {
         return null;
     }
 
-    public static String findClientLastNameByLoginData(String login, String password) {
+    public  String findClientLastNameByLoginData(String login, String password) {
+        LoginizationValidator loginizationValidator = new LoginizationValidator();
         try (BufferedReader reader = new BufferedReader(new FileReader(DB_PATH.toFile()))) {
             String line;
             while ((line = reader.readLine()) != null) {
                 String[] lineValues = line.split(",");
-                if (LoginizationValidator.validateUser(login, password)) {
+                if (loginizationValidator.validateUser(login, password)) {
                     return lineValues[4];
                 }
             }
@@ -114,12 +99,13 @@ public class ClientDao {
         return null;
     }
 
-    public static Double findClientBalanceByLoginData(String login, String password ) {
-            try (BufferedReader reader = new BufferedReader(new FileReader(DB_PATH.toFile()))) {
+    public Double findClientBalanceByLoginData(String login, String password ) {
+        LoginizationValidator loginizationValidator = new LoginizationValidator();
+        try (BufferedReader reader = new BufferedReader(new FileReader(DB_PATH.toFile()))) {
                 String line;
                 while ((line = reader.readLine()) != null) {
                     String[] lineValues = line.split(",");
-                    if (LoginizationValidator.validateUser(login, password)) {
+                    if (loginizationValidator.validateUser(login, password)) {
                         return Double.parseDouble(lineValues[5]); // Assuming first name is in the third column (index 2)
                     }
                 }
@@ -128,7 +114,7 @@ public class ClientDao {
             }
             return null;
     }
-    public static Map<Product, Integer> findClientBasketByLogin(String clientLogin) {
+    public Map<Product, Integer> findClientBasketByLogin(String clientLogin) {
         try (BufferedReader reader = new BufferedReader(new FileReader(DB_PATH.toFile()))) {
             String line;
             while ((line = reader.readLine()) != null) {
@@ -150,10 +136,11 @@ public class ClientDao {
         return null;
     }
 
-    public static Client initializeClient(String login, String password){
+    public Client initializeClient(String login, String password){
+        ClientDao clientDao = new ClientDao();
         final Long id = findClientIdByLoginData(login, password);
         String name = findClientNameByLoginData(login, password);
-        double balance = ClientDao.findClientBalanceByLoginData(login, password);
+        double balance = clientDao.findClientBalanceByLoginData(login, password);
 
         return new Client(id, name, balance);
     }

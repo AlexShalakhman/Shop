@@ -34,7 +34,7 @@ public class RegistrationUI {
                 if(registration == true){
                     doing = true;
                 }
-            } while (!doing);
+             } while (!doing);
 
         } catch (IOException ioException) {
             ioException.printStackTrace();

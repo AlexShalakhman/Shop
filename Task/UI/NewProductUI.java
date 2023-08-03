@@ -9,6 +9,7 @@ import java.io.InputStreamReader;
 
 public class NewProductUI {
     public static void startAddNewProduct()  {
+        CategoriesUI categoriesUI = new CategoriesUI();
         try (BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(System.in))) {
             System.out.println("   Addition of new Products   ");
             System.out.println("How many products would you like to add to the database?");
@@ -22,7 +23,7 @@ public class NewProductUI {
                 String productName = bufferedReader.readLine();
 
                 System.out.println("Product Type: ");
-                CategoriesUI.startCategoriesUI();
+                categoriesUI.startCategoriesUI();
                 System.out.print("Please type category you want your product refer to: ");
                 String productType = bufferedReader.readLine();
 

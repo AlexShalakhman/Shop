@@ -12,14 +12,14 @@ import java.nio.file.*;
 public class LoginizationValidator {
     private static final Path DB_PATH = Paths.get("Task/DataBase/client_table.txt");
 
-    public static boolean validateUser(String login, String password){
+    public boolean validateUser(String login, String password){
         if(validateLogin(login) && validatePassword(password)) {
             return true;
         }
         return false;
     }
 
-    private static boolean validateLogin(String login)   {
+    private boolean validateLogin(String login)   {
         try (BufferedReader reader = Files.newBufferedReader(DB_PATH)) {
             String line;
             boolean exception = false;
@@ -42,7 +42,7 @@ public class LoginizationValidator {
         return false;
     }
 
-    private static boolean validatePassword(String password) {
+    private boolean validatePassword(String password) {
         try {
             if (password.length() < 8) {
                 throw new InvalidPasswordException("Password must have at least 8 characters.");
