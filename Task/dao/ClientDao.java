@@ -44,7 +44,7 @@ public class ClientDao {
             while ((line = reader.readLine()) != null) {
                 String[] lineValues = line.split(",");
                 if (lineValues[1].equals(login) && lineValues[2].equals(password)) {
-                    return Long.parseLong(lineValues[0]); // Assuming first name is in the third column (index 2)
+                    return Long.parseLong(lineValues[0]);
                 }
             }
         } catch (IOException e) {
@@ -59,7 +59,7 @@ public class ClientDao {
             while ((line = reader.readLine()) != null) {
                 String[] lineValues = line.split(",");
                 if (lineValues[1].equals(login) && lineValues[2].equals(password)) {
-                    return lineValues[3] + " " + lineValues[4]; // Assuming first name is in the third column (index 2)
+                    return lineValues[3] + " " + lineValues[4];
                 }
             }
         } catch (IOException e) {
@@ -106,7 +106,7 @@ public class ClientDao {
                 while ((line = reader.readLine()) != null) {
                     String[] lineValues = line.split(",");
                     if (loginizationValidator.validateUser(login, password)) {
-                        return Double.parseDouble(lineValues[5]); // Assuming first name is in the third column (index 2)
+                        return Double.parseDouble(lineValues[5]);
                     }
                 }
             } catch (IOException e) {

@@ -6,6 +6,7 @@ import task.Task.dao.ProductDao;
 import task.Task.UI.EnumUI.ProductType;
 import task.Task.data.Client;
 import task.Task.data.Product;
+import task.Task.service.ShopManager;
 
 import java.io.*;
 import java.nio.file.Path;
@@ -22,10 +23,9 @@ public class CategoriesUI {
 
     public void mainMenu(Client client, BufferedReader bufferedReader) throws IOException {
         if (client.getName() != null) {
-       // bufferedReader = new BufferedReader(new InputStreamReader(System.in));
         int totalNumberOfitems = 0;
         double totalprice = 0;
-        System.out.printf("Hello, %s", client.getName());
+        System.out.printf("Hello, %s. What are you up to?", client.getName());
         boolean keepGoing = true;
                 do {
                     System.out.println();
@@ -58,7 +58,7 @@ public class CategoriesUI {
                                         System.out.println("Your total price to pay - " + totalprice + " for " + totalNumberOfitems + " items.");
                                         System.out.println("Your current balance - " + client.getBalance());
                                         System.out.println("Waiting for payment...");
-                                        client.getShop().processPayment(client, client.getShop().performSale(client));
+                                    client.getShop().processPayment(client, client.getShop().performSale(client));
                                     }
                                     break;
                                 case END_SESSION:
@@ -158,7 +158,7 @@ public class CategoriesUI {
                                 int amountOFReturn = Integer.parseInt(reader.readLine());
 
 
-                                Product productReturn = Client.findProductByName(nameProductToReturn, client);
+                                Product productReturn = productDao.findProductByName(nameProductToReturn);
                                 if (productReturn != null) {
                                     boolean removedFromBasket = client.addProductToBasket(productReturn, amountOFReturn);
                                     if (removedFromBasket) {
@@ -199,13 +199,21 @@ public class CategoriesUI {
                                 }
                                 break;
                             case CHECKOUT:
+                                ShopManager shopManager = new ShopManager();
                                 for (Map.Entry<Product, Integer> entry : client.getBasket().entrySet()) {
                                     totalprice += entry.getKey().getPrice();
                                     totalNumberOfitems += entry.getValue();
                                     System.out.println("Your total price to pay - " + totalprice + " for " + totalNumberOfitems + " items.");
                                     System.out.println("Your current balance - " + client.getBalance());
                                     System.out.println("Waiting for payment...");
-                                    client.getShop().processPayment(client, client.getShop().performSale(client));
+                                    shopManager.finalizePayment(client, totalprice);
+                                            if(shopManager.finalizePayment(client, totalprice) == true){
+                                                System.out.println("You have successfully paid for your goods, have a nice day!");
+
+                                    } else if (shopManager.finalizePayment(client, totalprice) == false){
+                                                System.out.println("Oh, something went wrong, try again");
+                                    }
+
                                 }
                                 break;
                             case BACK_TO_MAIN_MENU:

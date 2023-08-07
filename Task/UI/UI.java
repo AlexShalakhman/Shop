@@ -17,7 +17,7 @@ public class UI {
             String clientInput;
             Client client = null;
 
-            System.out.println("Welcome to the shop, Dear Customer!");
+            System.out.println("Welcome to the shop.txt, Dear Customer!");
             System.out.println("Are you an existing customer? Yes/No");
             clientInput = bufferedReader.readLine();
 
